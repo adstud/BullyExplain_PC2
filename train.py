@@ -39,7 +39,7 @@ print(device)
 
 
 
-output=open("/home/prince/prince/COLING/cyberbully/dataset-bully-word.pkl","rb")
+output=open("/Users/ancadubei/Documents/GitHub/BullyExplain_PC2/dataset-bully-word.pkl","rb")
 mbert = pickle.load(output)
 
 
@@ -124,13 +124,13 @@ class Tweet(torch.utils.data.Dataset):
             
             
             
-        doc=torch.tensor(self.data["doc"][idx].astype(np.float)).long().to(device)
+        doc=torch.tensor(self.data["doc"][idx].astype(float)).long().to(device)
         
-        sent_per_doc=torch.tensor(self.data["sent_per_doc"][idx].astype(np.float)).long().to(device)
-        word_per_sent=torch.tensor(self.data["word_per_sent"][idx].astype(np.float)).long().to(device)
-        label=torch.tensor(self.data["label"][idx].astype(np.long)).float().to(device)
+        sent_per_doc=torch.tensor(self.data["sent_per_doc"][idx].astype(float)).long().to(device)
+        word_per_sent=torch.tensor(self.data["word_per_sent"][idx].astype(float)).long().to(device)
+        label=torch.tensor(self.data["label"][idx].astype(int)).float().to(device)
         emotion=torch.tensor(self.data["emotion"][idx]).long().to(device)
-        sarcasm=torch.tensor(self.data["sarcasm"][idx].astype(np.long)).long().to(device)
+        sarcasm=torch.tensor(self.data["sarcasm"][idx].astype(int)).long().to(device)
         sentiment=torch.tensor(self.data["sentiment"][idx]).long().to(device)
         span=torch.tensor(self.data["span"][idx]).float().to(device)
         target=torch.tensor(self.data["target"][idx]).long().to(device)
@@ -179,7 +179,7 @@ vocab_size=20668
 # tweet 6000, unique words ->mapped 
 
 #embeddings=open("/home/prince/prince/COLING/cyberbully/embedding_matrix_6436.pkl","rb")
-embeddings=open("/home/prince/prince/COLING/cyberbully/embed_matrix_bert.npy","rb")
+embeddings=open("/Users/ancadubei/Documents/GitHub/BullyExplain_PC2/embed_matrix_bert.npy","rb")
 #embeddings=pickle.load(embeddings)
 embeddings=np.load(embeddings)
 
